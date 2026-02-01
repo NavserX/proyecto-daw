@@ -1,0 +1,7 @@
+mysql_data_dev/
+backend/mysql_data_dev/
+
+*.log
+.DS_Store
+
+.env

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend_app:
+    build: .
+    container_name: frontend_app_dev
+    ports:
+      - "80:80"
+    volumes:
+      - ./public_html:/var/www/html/public_html
+      - ./config/frontend.conf:/etc/apache2/sites-available/000-default.conf
+      - ./config/urls.js:/var/www/html/public_html/config/urls.js
+    networks:
+      - frontend-net
+
+networks:
+  frontend-net:
+    driver: bridge
