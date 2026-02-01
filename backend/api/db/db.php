@@ -1,7 +1,7 @@
 <?php
 
 //Guardo los datos de conexión de la base de datos en un fichero YML
-function getDBConfig() {
+/*function getDBConfig() {
     $dbFileConfig=dirname(__FILE__)."/../../dbconfiguration.yml";
 
     $configYML = yaml_parse_file($dbFileConfig);//necesita la extensión php-yaml
@@ -15,6 +15,32 @@ function getDBConfig() {
     );
 
 	return $result;
+}*/
+
+function getDBConfig() {
+    // Si estamos en Render, estas variables existirán
+    $host = getenv('DB_HOST') ?: null;
+
+    if ($host) {
+        // DATOS DE RENDER (Nube)
+        $cad = sprintf("mysql:dbname=%s;host=%s;port=%s;charset=UTF8", 
+                        getenv('DB_NAME'), $host, getenv('DB_PORT'));
+        return [
+            "cad" => $cad,
+            "user" => getenv('DB_USER'),
+            "pass" => getenv('DB_PASS')
+        ];
+    }
+
+    // SI NO HAY VARIABLES (Local/WSL), usará el YML de siempre
+    $dbFileConfig = dirname(__FILE__)."/../../dbconfiguration.yml";
+    $configYML = yaml_parse_file($dbFileConfig);
+
+    return [
+        "cad" => sprintf("mysql:dbname=%s;host=%s;charset=UTF8", $configYML["dbname"], $configYML["ip"]),
+        "user" => $configYML["user"],
+        "pass" => $configYML["pass"]
+    ];
 }
 
 function getDBConnection() {
