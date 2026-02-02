@@ -1,7 +1,9 @@
+.dockerignore
 mysql_data_dev/
-backend/mysql_data_dev/
+
+**/desktop.ini
+**/*:Zone.Identifier
+**/*.Identifier
 
 *.log
 .DS_Store
-
-.env

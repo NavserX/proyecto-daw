@@ -1,4 +1,4 @@
-
+const apiUrl = "http://localhost:8080";
 //Mostar / Ocultar el formulario de nueva película
 function showHideAddForm() {
     var tag = document.getElementById("new-form");
@@ -12,7 +12,6 @@ function showHideAddForm() {
 function loadRow(film, tableBody) {
     let row='<tr>';
 
-    row+='<tr>';
     row+='<th scope="row">'+film.id+'</th>';
     row+='<td>'+film.name+'</td>';
     row+='<td>'+film.director+'</td>';
@@ -45,7 +44,7 @@ function loadFilms() {
     let tableBody = document.getElementById("tbody-container");
     tableBody.innerHTML="";
 
-    fetch(apiUrl+"/api/films/get_films.php", {
+    fetch(apiUrl+"/backend/api/films/get_films.php", {
         method: 'GET'
     })
     .then((response) => {
@@ -75,7 +74,7 @@ function addNewFilm() {
         plot: document.getElementById("plot").value
     }
 
-    fetch(apiUrl+"/api/films/add_film.php", {
+    fetch(apiUrl+"/backend/api/films/add_film.php", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
