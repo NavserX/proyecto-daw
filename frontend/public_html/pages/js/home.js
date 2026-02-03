@@ -1,9 +1,9 @@
 //const apiUrl = "http://localhost:8080";
 //Mostar / Ocultar el formulario de nueva película
-const apiUrl = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+/*const apiUrl = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "http://localhost:8080" 
-    : "http://51.20.1.231:8080";
-    
+    : "http://51.20.1.231:8080";*/
+
 function showHideAddForm() {
     var tag = document.getElementById("new-form");
     if (tag.style.display === "none") 
