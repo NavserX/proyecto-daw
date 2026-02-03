@@ -48,7 +48,7 @@ function loadFilms() {
     let tableBody = document.getElementById("tbody-container");
     tableBody.innerHTML="";
 
-    fetch(apiUrl+"/backend/api/films/get_films.php", {
+    fetch(apiUrl+"/api/films/get_films.php", {
         method: 'GET'
     })
     .then((response) => {
@@ -78,7 +78,7 @@ function addNewFilm() {
         plot: document.getElementById("plot").value
     }
 
-    fetch(apiUrl+"/backend/api/films/add_film.php", {
+    fetch(apiUrl+"/api/films/add_film.php", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
