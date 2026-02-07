@@ -19,5 +19,7 @@ COPY backend/config/000-default.conf /etc/apache2/sites-available/000-default.co
 
 RUN chown -R www-data:www-data /var/www/html
 
+RUN ln -s /var/www/html/frontend/public_html/pages /var/www/html/app
+
 EXPOSE 80
 CMD ["apachectl", "-D", "FOREGROUND"]
