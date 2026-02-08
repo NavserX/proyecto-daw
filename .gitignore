@@ -1,5 +1,6 @@
 .dockerignore
 mysql_data_dev/
+mis-llaves.pem
 
 **/desktop.ini
 **/*:Zone.Identifier
