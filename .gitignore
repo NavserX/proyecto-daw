@@ -8,3 +8,4 @@ mis-llaves.pem
 
 *.log
 .DS_Store
+.env
